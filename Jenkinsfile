@@ -9,7 +9,7 @@ pipeline {
 
             steps{
 
-                gradle healthCheck
+                gradle test --tests test.java.testeHealthCheck.HealthCheckTest
 
             }
 
@@ -18,7 +18,7 @@ pipeline {
 
                     steps{
 
-                        gradle contrato
+                        gradle test --tests test.java.testeContrato.ContratoTest
                     }
 
         }
@@ -26,7 +26,7 @@ pipeline {
 
                             steps{
 
-                                gradle funcional
+                                gradle test --tests test.java.testeFuncional.FuncionalTest
 
                             }
 
