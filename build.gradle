@@ -32,4 +32,5 @@ test {
         includeGroups 'contrato','funcional','healthcheck'
     }
 
+
 }

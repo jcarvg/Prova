@@ -8,8 +8,7 @@ pipeline {
         stage('Teste de HealthCheck'){
 
             steps{
-
-                sh 'gradle test --tests java/testeHealthCheck/HealthCheckTest.java'
+                sh './gradlew test --tests HealthCheckTest'
 
             }
 
@@ -17,8 +16,7 @@ pipeline {
         stage('Teste de Contrato'){
 
                     steps{
-
-                       sh 'gradle test --tests java/testeContrato/ContratoTest.java'
+                       sh './gradlew test --tests ContratoTest'
                     }
 
         }
