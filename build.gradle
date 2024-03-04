@@ -28,7 +28,8 @@ dependencies {
 test {
     useTestNG(){
         useDefaultListeners = true
-        suites 'src/test/suite.xml'
+        suites 'src/test/resources/suite.xml'
+        if (project.hasProperty('testes')) { suites 'suite.xml' }
         includeGroups 'contrato','funcional','healthcheck'
     }
 
