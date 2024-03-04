@@ -5,10 +5,18 @@ pipeline {
     stages{
 
 
+        stage('Build'){
+
+                    steps{
+                        sh './gradlew clean build'
+
+                    }
+
+                }
         stage('Teste de HealthCheck'){
 
             steps{
-                sh './gradlew test --tests HealthCheckTest'
+                sh './gradlew test --tests "HealthCheckTest"'
 
             }
 
@@ -16,7 +24,7 @@ pipeline {
         stage('Teste de Contrato'){
 
                     steps{
-                       sh './gradlew test --tests ContratoTest'
+                       sh './gradlew test --tests "ContratoTest"'
                     }
 
         }
@@ -24,7 +32,7 @@ pipeline {
 
                             steps{
 
-                                sh 'gradle test --tests java/testeFuncional/FuncionalTest.java'
+                                sh 'gradle test --tests "FuncionalTest.java"'
 
                             }
 
