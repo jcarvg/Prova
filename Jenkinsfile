@@ -11,13 +11,11 @@ pipeline {
       }
 
         stage('Build'){
-
                     steps{
                         script{
                             sh "./gradlew clean test"
                         }
                     }
-
         }
         stage('Teste de HealthCheck'){
 
@@ -43,6 +41,7 @@ pipeline {
                     sshagent(['git']) {
                         script {
                             sh './gradlew FuncionalTest --no-daemon'
+                        }
                     }
                 }
             }
