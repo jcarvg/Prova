@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class HealthCheckTest extends BaseTest {
 
-    @Test
+    @Test(groups="healthCheck")
     public void healthCheckTestApi(){
         given().
                 contentType("application/json").

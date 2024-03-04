@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class FuncionalTest extends BaseTest {
 
-    @Test
+    @Test(groups="funcional")
     public void validaCreateNameEJob201(){
 
     LoginDTO bodyLogin = new LoginDTO();
@@ -32,7 +32,7 @@ public class FuncionalTest extends BaseTest {
     log().all().statusCode(201).body(CoreMatchers.containsString("createdAt"));
 }
 
-    @Test
+    @Test(groups="funcional")
     public void validaCreateSemJob201(){
 
         LoginDTO bodyLogin = new LoginDTO();
@@ -48,7 +48,7 @@ public class FuncionalTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups="funcional")
     public void validaCreateSemName201(){
 
         LoginDTO bodyLogin = new LoginDTO();
@@ -63,7 +63,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(201).body(CoreMatchers.containsString("createdAt"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validaCreateSemNameEJob201(){
 
         given().
@@ -75,18 +75,8 @@ public class FuncionalTest extends BaseTest {
 
     }
 
-    public void validaCreateNameEJob201(int idCriado){
 
-        given().
-                contentType(ContentType.JSON).
-                log().all().
-                when().
-                post(URL_BASE_URI+"users/"+idCriado).
-                then().
-                log().all().statusCode(201).body(CoreMatchers.containsString("createdAt"));
-    }
-
-    @Test
+    @Test(groups="funcional")
     public void validaPostRegister200(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.in");
@@ -101,7 +91,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(200).body("id",is(4));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validaPostRegister400(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("teste@gmail.com");
@@ -116,7 +106,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("Note: Only defined users succeed registration"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validaPostRegisterCampoObrigPassword400(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("teste@gmail.com");
@@ -130,7 +120,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("Missing password"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validaPostRegisterCampoObrigPasswordEEmail400(){
         UserDTO bodyUser= new UserDTO();
         given().
@@ -142,7 +132,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("Missing email or username"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validaPostRegisterCampoObrigEmail400(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setPassword("pistol");
@@ -156,7 +146,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("Missing email or username"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validarPostLogin200(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.in");
@@ -171,7 +161,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(200).body("token",is("QpwL5tke4Pnpja7X4"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validarPostLogin400(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.i");
@@ -186,7 +176,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("user not found"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validarPostLoginSemPassword400(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.in");
@@ -200,7 +190,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error",is("Missing password"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validarPostLoginSemEmail400() {
         UserDTO bodyUser = new UserDTO();
         bodyUser.setPassword("cityslicka");
@@ -214,7 +204,7 @@ public class FuncionalTest extends BaseTest {
                 log().all().statusCode(400).body("error", is("Missing email or username"));
     }
 
-    @Test
+    @Test(groups="funcional")
     public void validarPostLoginSemEmailePassword400(){
 
         given().

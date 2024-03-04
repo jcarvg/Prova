@@ -4,11 +4,12 @@ pipeline {
 
     stages{
 
+
         stage('Teste de HealthCheck'){
 
             steps{
 
-                echo 'teste 123'
+                gradle healthCheck
 
             }
 
@@ -17,8 +18,7 @@ pipeline {
 
                     steps{
 
-                        echo 'teste 123'
-
+                        gradle contrato
                     }
 
         }
@@ -26,7 +26,7 @@ pipeline {
 
                             steps{
 
-                                echo 'teste 123'
+                                gradle funcional
 
                             }
 

@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class ContratoTest extends BaseTest {
 
 
-    @Test
+    @Test(groups="contrato")
     public void validarContratoPostCreate(){
         LoginDTO bodyLogin = new LoginDTO();
         bodyLogin.setName("morpheus");
@@ -28,7 +28,7 @@ public class ContratoTest extends BaseTest {
                 log().all().body(matchesJsonSchema(new File("src\\test/resources\\schemas\\post_create_201_response.json")));
     }
 
-    @Test
+    @Test(groups="contrato")
     public void validarContratoPostRegister(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.in");
@@ -43,7 +43,7 @@ public class ContratoTest extends BaseTest {
                 log().all().body(matchesJsonSchema(new File("src\\test/resources\\schemas\\post_register_succesful.json")));
     }
 
-    @Test
+    @Test(groups="contrato")
     public void validarContratoPostLogin(){
         UserDTO bodyUser= new UserDTO();
         bodyUser.setEmail("eve.holt@reqres.in");
