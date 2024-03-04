@@ -4,40 +4,47 @@ pipeline {
 
     stages{
 
+      stage('Checkout') {
+                steps { //Checking out the repo
+                    checkout changelog: true, poll: true, scm: [$class: 'GitSCM', branches: [[name: '*/master']], browser: [$class: 'Github', repoUrl: 'https://github.com/jcarvg/Prova'], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'ssh://git@github.com:jcarvg/Prova.git']]]
+                }
+      }
 
         stage('Build'){
 
                     steps{
-                        bat "gradle clean test"
-
+                        script{
+                            sh "./gradlew clean test"
+                        }
                     }
 
-                }
+        }
         stage('Teste de HealthCheck'){
 
             steps{
-                sh './gradlew test --tests "HealthCheckTest"'
-
+                sshagent(['git']) {
+                    script {
+                        sh './gradlew HealthCheckTest --no-daemon'
+                    }
+                }
             }
-
         }
         stage('Teste de Contrato'){
-
-                    steps{
-                       sh './gradlew test --tests "ContratoTest"'
+             steps{
+                sshagent(['git']) {
+                    script {
+                        sh './gradlew ContratoTest --no-daemon'
                     }
-
+                }
+            }
         }
             stage('Testes Funcionais'){
-
-                            steps{
-
-                                sh 'gradle test --tests "FuncionalTest.java"'
-
-                            }
-
+                steps{
+                    sshagent(['git']) {
+                        script {
+                            sh './gradlew FuncionalTest --no-daemon'
+                    }
                 }
-
+            }
     }
-
 }
