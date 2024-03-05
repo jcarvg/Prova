@@ -3,12 +3,15 @@
 <!--Grouping Example-->
 <suite name="suite">
     <test name="Suite de Testes">
-        <groups>
-            <run>
-                <include name="healthCheck"/>
-                <include name="contrato"/>
-                <include name="funcional"/>
-            </run>
-        </groups>
+        <classes>
+            <class name = "HealthCheckTest"/>
+        </classes>
+    </test>
+        <classes>
+            <class name = "ContratoTest"/>
+        </classes>
+        <classes>
+            <class name = "FuncionalTest"/>
+        </classes>
     </test>
 </suite>
